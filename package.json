@@ -9,18 +9,15 @@
     "publish": "npm publish --access public",
     "build": "rmdir /s /Q .\\dist && tsc",
     "build-linux": "rm -rf ./dist && tsc",
+    "prettier": "prettier --write \"**/*.{ts,js,json,md}\"",
     "pre-commit": "lint-staged",
     "huskyinstall": "husky install"
   },
   "keywords": [
     "async",
-    "filter",
-    "pipe",
-    "observable",
-    "rxjs",
+    "miraway",
     "promise",
-    "vue",
-    "mixin"
+    "vue"
   ],
   "author": "hale249 <lehatybg1@gmail.com>",
   "license": "ISC",
@@ -31,10 +28,11 @@
   "bugs": {
     "url": "https://github.com/hale249/vue-use/issues"
   },
-  "peerDependencies": {
-    "vue": "3.x"
+  "dependencies": {
+    "vue": "^3.2.45"
   },
   "devDependencies": {
+    "@babel/types": "^7.20.5",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@typescript-eslint/eslint-plugin": "^5.47.0",

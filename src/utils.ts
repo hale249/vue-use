@@ -1,4 +1,4 @@
-import { getCurrentInstance, onMounted, onUnmounted, nextTick } from 'vue';
+import { getCurrentInstance, onMounted, onUnmounted, nextTick } from "vue";
 
 export type Fn = () => void;
 
@@ -9,13 +9,13 @@ export type Fn = () => void;
  * @param sync if set to false, it will run in the nextTick() of Vue
  */
 export function tryOnMounted(fn: Fn, sync = true): void {
-    if (getCurrentInstance()) {
-        onMounted(fn);
-    } else if (sync) {
-        fn();
-    } else {
-        nextTick().then(fn);
-    }
+  if (getCurrentInstance()) {
+    onMounted(fn);
+  } else if (sync) {
+    fn();
+  } else {
+    nextTick().then(fn);
+  }
 }
 
 /**
@@ -24,7 +24,7 @@ export function tryOnMounted(fn: Fn, sync = true): void {
  * @param fn
  */
 export function tryOnUnmounted(fn: Fn): void {
-    if (getCurrentInstance()) {
-        onUnmounted(fn);
-    }
+  if (getCurrentInstance()) {
+    onUnmounted(fn);
+  }
 }

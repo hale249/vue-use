@@ -9,45 +9,48 @@
 ## Usage
 
 ### useAsync
+
 You can define async functions that run once and persist the data on client-side.
 
 ```bash
   import { useAsync } from '@mirawayltd/vue-use';
-  
+
   const [func, { loading, error }] = useAsync(T) => {....}
-  
+
   /...
 ```
 
 ### useSpinner
+
 Useful to bind the `isPending` to a spinner icon with a minimum duration.
 
 ```bash
     import { useAsync, useSpinner } from '@mirawayltd/vue-use';
-    
+
     const func = () => ...
-    
+
     const { data, loading } = useAsync(func, [params, condition]);
-    
+
     const isPendingSpinner = useSpinner(loading);
-    
+
     // ...
 ```
 
-
 ### useTitle
+
 Reactive document title
 
-```bash 
+```bash
     import { useTitle } from '@mirawayltd/vue-use';
 
     const title = useTitle('New Title', { template: '%s | My Awesome Website' })
 ```
 
 ### useScriptTag
+
 Script tag injecting.
 
-```bash 
+```bash
     import { useScriptTag } from '@mirawayltd/vue-use';
 
     useScriptTag(
@@ -60,9 +63,10 @@ Script tag injecting.
 ```
 
 ### useLinkTag
+
 Inject `reactive` link `style` or `js` element in head.
 
-```bash 
+```bash
     import { useLinkTag } from '@mirawayltd/vue-use';
 
     useLinkTag(
@@ -75,9 +79,10 @@ Inject `reactive` link `style` or `js` element in head.
 ```
 
 ### tryOnMounted
+
 Safe `onMounted`. Call `onMounted()` if it's inside a component lifecycle, if not, just call the function
 
-```bash 
+```bash
     import { tryOnMounted } from '@mirawayltd/vue-use';
 
     tryOnMounted(() => {
@@ -86,8 +91,10 @@ Safe `onMounted`. Call `onMounted()` if it's inside a component lifecycle, if no
 ```
 
 ### tryOnMounted
+
 Call `onUnmounted()` if it's inside a component lifecycle, if not, do nothing
-```bash 
+
+```bash
     import { tryOnUnmounted } from '@mirawayltd/vue-use';
 
     tryOnUnmounted(() => {
