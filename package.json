@@ -1,0 +1,60 @@
+{
+  "name": "@mirawayltd/vue-use",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Packages common utils",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "publish": "npm publish --access public",
+    "build": "rmdir /s /Q .\\dist && tsc",
+    "build-linux": "rm -rf ./dist && tsc",
+    "pre-commit": "lint-staged",
+    "huskyinstall": "husky install"
+  },
+  "keywords": [
+    "async",
+    "filter",
+    "pipe",
+    "observable",
+    "rxjs",
+    "promise",
+    "vue",
+    "mixin"
+  ],
+  "author": "hale249 <lehatybg1@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "url": "git+https://github.com/hale249/vue-use.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/hale249/vue-use/issues"
+  },
+  "peerDependencies": {
+    "vue": "3.x"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "devmoji": "^2.3.0",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0",
+    "vue-tsc": "^1.0.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
