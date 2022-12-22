@@ -1,13 +1,13 @@
-import { ref, watch, Ref } from "vue";
-import { isString } from "./shared";
+import { ref, watch, Ref } from 'vue-demi';
+import { isString } from './shared';
 
 /**
  * Reactive document title.
  * @param newTitle
  * @param template
  */
-export function useTitle(newTitle: string | Ref<string>, template = "%s"): Ref<string> {
-  const title = ref(newTitle ?? document?.title ?? "");
+export function useTitle(newTitle: string | Ref<string>, template = '%s'): Ref<string> {
+  const title = ref(newTitle ?? document?.title ?? '');
 
   watch(
     title,
@@ -16,7 +16,7 @@ export function useTitle(newTitle: string | Ref<string>, template = "%s"): Ref<s
         document.title = template.replace(/%s/g, t);
       }
     },
-    { immediate: true }
+    { immediate: true },
   );
 
   return title;

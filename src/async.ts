@@ -1,5 +1,5 @@
-import { ref, Ref } from "vue";
-import { NOOP } from "./shared";
+import { ref, Ref } from 'vue-demi';
+import { NOOP } from './shared';
 
 export type UseAsyncResult = {
   loading: Ref<boolean>;
@@ -33,7 +33,7 @@ export function useAsync<T>(
   options: UseAsyncOptions<T> = {
     onResolve: NOOP,
     onReject: NOOP,
-  }
+  },
 ): UseAsyncReturn<T> {
   const loading = ref(false);
   const error = ref(null);
@@ -52,7 +52,7 @@ export function useAsync<T>(
     const promise = Promise.resolve(args ? fn(...args) : fn());
 
     return promise
-      .then(async (data) => {
+      .then(async data => {
         error.value = null;
         networkError.value = null;
 
@@ -61,9 +61,9 @@ export function useAsync<T>(
         }
         return Promise.resolve(data);
       })
-      .catch(async (err) => {
+      .catch(async err => {
         // TODO: consider move specific logic of network error to onReject hook
-        if (err?.name === "AxiosError") {
+        if (err?.name === 'AxiosError') {
           networkError.value = err;
         }
         error.value = err;

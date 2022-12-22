@@ -1,4 +1,4 @@
-import { getCurrentInstance, onMounted, onUnmounted, nextTick } from "vue";
+import { getCurrentInstance, onMounted, onUnmounted, nextTick } from 'vue-demi';
 
 export type Fn = () => void;
 

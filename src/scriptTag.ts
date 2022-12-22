@@ -1,6 +1,6 @@
-import { ref, unref, Ref } from "vue";
-import { NOOP } from "./shared";
-import { tryOnMounted, tryOnUnmounted } from "./utils";
+import { ref, unref, Ref } from 'vue-demi';
+import { NOOP } from './shared';
+import { tryOnMounted, tryOnUnmounted } from './utils';
 
 export interface UseScriptTagOptions {
   /**
@@ -31,16 +31,16 @@ export interface UseScriptTagOptions {
    */
   manual?: boolean;
 
-  crossOrigin?: "anonymous" | "use-credentials";
+  crossOrigin?: 'anonymous' | 'use-credentials';
   referrerPolicy?:
-    | "no-referrer"
-    | "no-referrer-when-downgrade"
-    | "origin"
-    | "origin-when-cross-origin"
-    | "same-origin"
-    | "strict-origin"
-    | "strict-origin-when-cross-origin"
-    | "unsafe-url";
+    | 'no-referrer'
+    | 'no-referrer-when-downgrade'
+    | 'origin'
+    | 'origin-when-cross-origin'
+    | 'same-origin'
+    | 'strict-origin'
+    | 'strict-origin-when-cross-origin'
+    | 'unsafe-url';
   noModule?: boolean;
   defer?: boolean;
   /**
@@ -60,11 +60,11 @@ export type ScriptTagReturn = {
 export function useScriptTag(
   src: string,
   onLoaded: (el: HTMLScriptElement) => void = NOOP,
-  options: UseScriptTagOptions = {}
+  options: UseScriptTagOptions = {},
 ): ScriptTagReturn {
   let _promise: Promise<HTMLScriptElement | boolean> | null = null;
   const scriptTag = ref<HTMLScriptElement | null>(null);
-  const { type = "text/javascript", async = true, immediate = true, head } = options;
+  const { type = 'text/javascript', async = true, immediate = true, head } = options;
 
   /**
    * Load the script specified via `src`.
@@ -94,12 +94,12 @@ export function useScriptTag(
 
       // Script tag not found, preparing the element for appending
       if (!el) {
-        el = document.createElement("script");
+        el = document.createElement('script');
         el.type = type;
         el.async = async;
         el.src = unref(src);
 
-        el.setAttribute("data-script-tag", "true");
+        el.setAttribute('data-script-tag', 'true');
 
         // Optional attributes
         if (options.defer) {
@@ -122,15 +122,15 @@ export function useScriptTag(
         shouldAppend = true;
       }
       // Script tag already exists, resolve the loading Promise with it.
-      else if (el.hasAttribute("data-loaded")) {
+      else if (el.hasAttribute('data-loaded')) {
         resolveWithElement(el);
       }
 
       // Event listeners
-      el.addEventListener("error", (event) => reject(event));
-      el.addEventListener("abort", (event) => reject(event));
-      el.addEventListener("load", () => {
-        el.setAttribute("data-loaded", "true");
+      el.addEventListener('error', event => reject(event));
+      el.addEventListener('abort', event => reject(event));
+      el.addEventListener('load', () => {
+        el.setAttribute('data-loaded', 'true');
         onLoaded(el);
         resolveWithElement(el);
       });

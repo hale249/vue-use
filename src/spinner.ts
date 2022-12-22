@@ -1,4 +1,4 @@
-import { watch, computed, ref, Ref } from "vue";
+import { watch, computed, ref, Ref } from 'vue-demi';
 
 export function useSpinner(isPending: Ref<undefined | boolean>, duration = 400) {
   const isPendingSpinner = ref<boolean>(false);
@@ -22,7 +22,7 @@ export function useSpinner(isPending: Ref<undefined | boolean>, duration = 400) 
     },
     {
       immediate: true,
-    }
+    },
   );
 
   return computed(() => isPendingSpinner.value);
